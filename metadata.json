@@ -1,0 +1,6 @@
+{
+  "name": "Active Recall & Spaced Repetition Tracker",
+  "description": "Systematic spaced repetition tracker with automated revision scheduling, active recall practice, and daily review queue.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
