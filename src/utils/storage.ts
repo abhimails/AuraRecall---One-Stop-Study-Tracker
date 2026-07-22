@@ -53,6 +53,32 @@ export function saveSimulatedDate(dateStr: string): void {
   }
 }
 
+const STORAGE_KEY_INCEPTION_DATE = 'aura_recall_inception_date_v1';
+
+export function loadCustomInceptionDate(): string | null {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY_INCEPTION_DATE);
+    if (saved && /^\d{4}-\d{2}-\d{2}$/.test(saved)) {
+      return saved;
+    }
+  } catch (err) {
+    console.error('Error loading inception date:', err);
+  }
+  return null;
+}
+
+export function saveCustomInceptionDate(dateStr: string | null): void {
+  try {
+    if (dateStr) {
+      localStorage.setItem(STORAGE_KEY_INCEPTION_DATE, dateStr);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_INCEPTION_DATE);
+    }
+  } catch (err) {
+    console.error('Error saving inception date:', err);
+  }
+}
+
 export function calculateRetentionStats(topics: Topic[], currentDateStr: string): RetentionStats {
   let totalRevisionsCompleted = 0;
   let totalAssessed = 0;
